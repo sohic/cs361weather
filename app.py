@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+#####################################################################################################################################################
 def get_coord(zipcode):
     api_key = '03d39d0a4844727881ad16a48828f5f0'
     url = f'https://api.openweathermap.org/geo/1.0/zip?zip={zipcode}&appid={api_key}'
@@ -10,6 +11,7 @@ def get_coord(zipcode):
     data = response.json()
     return data
 
+######################################################################################################################################################
 def get_current(zipcode, lat, lon):
     api_key = '03d39d0a4844727881ad16a48828f5f0'
     url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude=minutely,daily,alerts&appid={api_key}&units=metric"
@@ -30,6 +32,7 @@ def get_current(zipcode, lat, lon):
     }
     return response_data
 
+######################################################################################################################################################
 @app.route('/<zipcode>', methods=['GET'])
 def weather(zipcode):
 
